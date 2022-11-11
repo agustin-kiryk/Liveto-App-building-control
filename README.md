@@ -11,9 +11,9 @@
 -   JavaScript - Desarrollo.
 -   TypeScript - Desarrollo.
 -   React - Libreria Front End.
--   React Router - Libreria ruteo.
--   Axios - Libreria
--   Redux toolkit - Libreria
+-   React Router - Libreria ruteo. (FALTA INSTALAR)
+-   Axios - Libreria (FALTA INSTALAR)
+-   Redux toolkit - Libreria (FALTA INSTALAR)
 
 ---
 
