@@ -12,6 +12,8 @@
 -   TypeScript - Desarrollo.
 -   React - Libreria Front End.
 -   React Router - Libreria ruteo.
+-   Axios - Libreria
+-   Redux toolkit - Libreria
 
 ---
 
