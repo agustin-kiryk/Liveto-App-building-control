@@ -13,7 +13,9 @@
 -   React - Libreria Front End.
 -   React Router - Libreria ruteo.
 
-## FRONTEND
+---
+
+## BACKEND
 
 ### Stack y herramientas:
 

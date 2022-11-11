@@ -12,3 +12,12 @@
 -   TypeScript - Desarrollo.
 -   React - Libreria Front End.
 -   React Router - Libreria ruteo.
+
+---
+
+## BACKEND
+
+### Stack y herramientas:
+
+-   Java - Desarrollo
+-   Springboot - Framework...
