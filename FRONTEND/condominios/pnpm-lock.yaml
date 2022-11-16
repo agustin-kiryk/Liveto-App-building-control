@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   '@types/react': ^18.0.24
@@ -8,6 +8,7 @@ specifiers:
   postcss: ^8.4.19
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-icons: ^4.6.0
   tailwindcss: ^3.2.4
   typescript: ^4.6.4
   vite: ^3.2.3
@@ -15,6 +16,7 @@ specifiers:
 dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-icons: 4.6.0_react@18.2.0
 
 devDependencies:
   '@types/react': 18.0.25
@@ -22,7 +24,7 @@ devDependencies:
   '@vitejs/plugin-react': 2.2.0_vite@3.2.3
   autoprefixer: 10.4.13_postcss@8.4.19
   postcss: 8.4.19
-  tailwindcss: 3.2.4
+  tailwindcss: 3.2.4_postcss@8.4.19
   typescript: 4.8.4
   vite: 3.2.3
 
@@ -1101,6 +1103,14 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-icons/4.6.0_react@18.2.0:
+    resolution: {integrity: sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-refresh/0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
@@ -1186,10 +1196,12 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /tailwindcss/3.2.4:
+  /tailwindcss/3.2.4_postcss@8.4.19:
     resolution: {integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
