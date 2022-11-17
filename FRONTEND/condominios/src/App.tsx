@@ -21,7 +21,7 @@ function App() {
             liveto
           </h1>
         </div>
-        <div className=" flex flex-col justify-between h-[550px]">
+        <div className=" flex flex-col justify-between h-[530px]">
           {/* Menu */}
           <nav>
             <ul>
