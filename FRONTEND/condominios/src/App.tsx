@@ -1,3 +1,4 @@
+
 import {
   RiBuilding4Line,
   RiDashboardLine,
@@ -7,10 +8,14 @@ import {
   RiAlertFill,
   RiLogoutBoxLine,
 } from 'react-icons/ri';
+
+
+
 import './App.css';
 
 function App() {
   return (
+
     <div className="min-h-screen grid grid-cols-6">
       <div className=" col-span-1 p-8 ">
         {/* Logotipo */}
@@ -86,6 +91,13 @@ function App() {
         </div>
       </div>
       <div className=" col-span-5">Hola2</div>
+
+    <div className="App">
+      <div>
+        <h1 className="text-3xl bg-red-600">Inicio de Proyecto</h1>
+      </div>
+
+    </div>
     </div>
   );
 }
