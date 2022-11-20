@@ -1,4 +1,4 @@
-package com.c823.consorcio.Entity;
+package com.c823.consorcio.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,5 +39,12 @@ public class AccountEntity {
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountId")
     private List<TransactionEntity> transactions = new ArrayList<>();
 
-   private boolean deleted = Boolean.FALSE;
+    @OneToOne
+    @JoinColumn(name = "apartment_id")
+    private ApartmentEntity apartment;
+
+
+
+
+    private boolean deleted = Boolean.FALSE;
 }

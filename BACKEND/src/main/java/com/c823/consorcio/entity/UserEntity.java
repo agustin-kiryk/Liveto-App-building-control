@@ -1,4 +1,4 @@
-package com.c823.consorcio.Entity;
+package com.c823.consorcio.entity;
 
 import java.util.ArrayList;
 import java.util.Date;

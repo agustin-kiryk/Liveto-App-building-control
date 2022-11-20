@@ -1,4 +1,4 @@
-package com.c823.consorcio.Entity;
+package com.c823.consorcio.entity;
 
 import com.c823.consorcio.enums.Turn;
 import lombok.Getter;

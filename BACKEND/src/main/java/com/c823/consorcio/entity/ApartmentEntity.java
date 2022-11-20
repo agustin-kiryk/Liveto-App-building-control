@@ -1,4 +1,4 @@
-package com.c823.consorcio.Entity;
+package com.c823.consorcio.entity;
 
 
 import lombok.Getter;
@@ -10,8 +10,9 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class ApartmentEntity {
+
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "APARTMENT_ID")
     private long apartmentId;
 
@@ -21,15 +22,19 @@ public class ApartmentEntity {
     @Column(name = "STREET")
     private String street;
 
-    @Column(name= "STREET_NUMBER")
+    @Column(name = "STREET_NUMBER")
     private int streetNumber;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private AccountEntity account;
+
     public ApartmentEntity() {
     }
-
-
 }
+
+
