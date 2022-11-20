@@ -1,5 +1,5 @@
 package com.c823.consorcio.enums;
 
-public enum RolName {
+public enum RoleName {
     ADMIN, USER
 }

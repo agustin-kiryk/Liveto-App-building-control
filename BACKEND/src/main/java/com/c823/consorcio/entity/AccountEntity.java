@@ -1,29 +1,43 @@
-package com.c823.consorcio.entity;
+package com.c823.consorcio.Entity;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
+@Getter
+@Setter
 @Entity
+@Table(name = "ACCOUNTS")
+@SQLDelete(sql = "UPDATE accounts SET deleted = true WHERE account_id=?")
+@Where(clause = "deleted=false")
+
 public class AccountEntity {
+
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "ACCOUNT_ID", nullable = false)
+    private Long accountId;
+
+    @Column(name = "BALANCE", nullable = false)
     private double balance;
-    @OneToOne
-    @JoinColumn(name = "user_id")
+
+    @Column(name = "CREATION_DATE", nullable = false)
+    private Date creationDate;
+
+    @Column(name = "UPDATE_DATE", nullable = false)
+    private Date updateDate;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
-    public AccountEntity() {
-    }
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountId")
+    private List<TransactionEntity> transactions = new ArrayList<>();
 
-    public AccountEntity(double balance) {
-        this.balance = balance;
-    }
-
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
+   private boolean deleted = Boolean.FALSE;
 }

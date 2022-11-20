@@ -1,39 +1,57 @@
-package com.c823.consorcio.entity;
+package com.c823.consorcio.Entity;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
+@Table(name = "USERS")
+@SQLDelete(sql = "UPDATE users SET deleted = true WHERE user_id=?" )
+@Where(clause = "deleted=false")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+    private Long userId;
+
+    @Column(name = "FIRST_NAME", nullable = false)
+    private String firstName;
+
+    @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
+
+    @Column(name = "EMAIL", nullable = false)
     private String email;
+
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
+    @Column(name = "CREATION_DATE", nullable = false)
+    private Date creationDate;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    //uno dos tablas para crear otra llamada user_rol, la tabla user_rol tiene dos columnas una para el user_id y otra para el rol_id
-    @JoinTable(name = "user_rol", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private Set<RolEntity> roles = new HashSet<>();
-
-    public UserEntity() {
+    @OneToMany(mappedBy = "user",
+    fetch = FetchType.EAGER)
+    private List<ApartmentEntity> apartments = new ArrayList<>();
+    //Metodo para que el usuario agregue departamentos
+    public void addApartment(ApartmentEntity apartment){
+        apartments.add(apartment);
     }
 
-    public UserEntity(Long id, String name, String lastName, String email, String password) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private RoleEntity role;
+
+    private boolean deleted = Boolean.FALSE;
+
+
+
 
 }

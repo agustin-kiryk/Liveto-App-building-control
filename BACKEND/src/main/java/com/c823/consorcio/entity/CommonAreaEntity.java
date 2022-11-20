@@ -1,17 +1,22 @@
-package com.c823.consorcio.entity;
+package com.c823.consorcio.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
 public class CommonAreaEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "AMENITY_ID")
+    private Long amenityId;
+
+    @Column(name = "NAME")
     private String name;
+
     @ManyToOne
     @JoinColumn(name = "reservation_id")
     private ReservationEntity reservation;
