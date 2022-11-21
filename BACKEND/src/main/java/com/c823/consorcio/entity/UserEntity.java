@@ -45,6 +45,15 @@ public class UserEntity {
         apartments.add(apartment);
     }
 
+    /*@OneToMany(mappedBy = "apartment",
+        fetch = FetchType.EAGER)
+    private List<AccountEntity> accounts = new ArrayList<>();
+    //Metodo para que el usuario agregue departamentos
+    public void addAccount(AccountEntity account){
+        accounts.add(account);
+    }*/
+
+
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleEntity role;

@@ -1,6 +1,9 @@
 package com.c823.consorcio.auth.controller;
 
+import com.c823.consorcio.auth.dto.AuthenticationRequest;
+import com.c823.consorcio.auth.dto.AuthenticationResponse;
 import com.c823.consorcio.auth.dto.ResponseUserDto;
+import com.c823.consorcio.auth.dto.UserAuthDto;
 import com.c823.consorcio.auth.service.JwtUtils;
 import com.c823.consorcio.auth.service.UserDetailsCustomService;
 import com.c823.consorcio.service.IUserService;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 public class UserAuthController {
+
   private UserDetailsCustomService userDetailsServices;
   private AuthenticationManager authenticationManager;
   private JwtUtils jwtTokenUtils;
@@ -35,8 +39,9 @@ public class UserAuthController {
     this.authenticationManager = authenticationManager;
     this.jwtTokenUtils = jwtTokenUtils;
   }
+
   @PostMapping("/register")
-  public ResponseEntity<ResponseUserDto> signUp(@Valid@RequestBody ResponseUserDto user) {
+  public ResponseEntity<ResponseUserDto> signUp(@Valid @RequestBody ResponseUserDto user) {
     ResponseUserDto userRegister = this.userDetailsServices.save(user);
     return ResponseEntity.status(HttpStatus.CREATED).body(userRegister);
   }
@@ -48,7 +53,7 @@ public class UserAuthController {
   }
 
 
-  @PostMapping("/login")
+  /*@PostMapping("/login")
   public ResponseEntity<AuthenticationResponse> signIn(
       @RequestBody AuthenticationRequest authenticationRequest) {
 
@@ -64,6 +69,5 @@ public class UserAuthController {
     return ResponseEntity.ok(new AuthenticationResponse(jwt));
   }
 
-
-
+  }*/
 }

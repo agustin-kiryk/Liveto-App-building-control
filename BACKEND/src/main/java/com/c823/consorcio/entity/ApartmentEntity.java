@@ -19,11 +19,9 @@ public class ApartmentEntity {
     @Column(name = "APARTMENT_NUMBER")
     private Long apartmentNumber;
 
-    @Column(name = "STREET")
-    private String street;
 
-    @Column(name = "STREET_NUMBER")
-    private int streetNumber;
+    @Column(name = "FLOOR")
+    private String floor;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
