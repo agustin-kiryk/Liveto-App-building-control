@@ -50,11 +50,6 @@ public class AccountServiceImpl implements IAccountService {
 
   }
 
-  @Override
-  public void addAccount(String email) {
-
-
-  }
 
   @Override
   public AccountEntity createAccount(Long apartmentId) {

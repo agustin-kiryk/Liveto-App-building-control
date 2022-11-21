@@ -67,7 +67,7 @@ public class UserAuthController {
 
     final String jwt = jwtTokenUtils.generateToken(userDetails);
     return ResponseEntity.ok(new AuthenticationResponse(jwt));
-  }
+  }*/
 
 
   }
