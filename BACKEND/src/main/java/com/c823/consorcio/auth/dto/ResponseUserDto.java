@@ -28,7 +28,7 @@ public class ResponseUserDto {
   private List<AccountDto> accounts;
   private Date creationDate;
   private Long apartmentNumber;
-  //private String jwt;
+  private String jwt;
 
 
 }

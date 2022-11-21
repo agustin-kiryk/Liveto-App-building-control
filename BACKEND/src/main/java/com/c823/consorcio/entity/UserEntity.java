@@ -1,5 +1,6 @@
 package com.c823.consorcio.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -17,7 +19,8 @@ import org.hibernate.annotations.Where;
 @Table(name = "USERS")
 @SQLDelete(sql = "UPDATE users SET deleted = true WHERE user_id=?" )
 @Where(clause = "deleted=false")
-public class UserEntity {
+public class UserEntity implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -35,23 +38,29 @@ public class UserEntity {
     private String password;
 
     @Column(name = "CREATION_DATE", nullable = false)
+    @CreationTimestamp
     private Date creationDate;
 
-    @OneToMany(mappedBy = "user",
-    fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = {
+        CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.REFRESH,
+        CascadeType.PERSIST}, fetch = FetchType.EAGER)
     private List<ApartmentEntity> apartments = new ArrayList<>();
     //Metodo para que el usuario agregue departamentos
     public void addApartment(ApartmentEntity apartment){
         apartments.add(apartment);
     }
 
-    /*@OneToMany(mappedBy = "apartment",
-        fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<AccountEntity> accounts = new ArrayList<>();
-    //Metodo para que el usuario agregue departamentos
+    //Metodo para que el usuario agregue cuentas
     public void addAccount(AccountEntity account){
         accounts.add(account);
-    }*/
+    }
+
+
 
 
     @ManyToOne

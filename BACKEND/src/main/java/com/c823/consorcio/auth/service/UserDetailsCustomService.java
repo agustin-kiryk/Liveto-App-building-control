@@ -3,17 +3,22 @@ package com.c823.consorcio.auth.service;
 
 import com.c823.consorcio.auth.dto.UserAuthDto;
 
+
+import com.c823.consorcio.auth.exception.ParamNotFound;
+
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.RoleEntity;
 import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.auth.dto.ResponseUserDto;
 import com.c823.consorcio.auth.exception.RepeatedUsername;
 import com.c823.consorcio.enums.RoleName;
+import com.c823.consorcio.mapper.ApartmentMap;
 import com.c823.consorcio.mapper.UserMap;
 import com.c823.consorcio.repository.IApartmentRepository;
 import com.c823.consorcio.repository.IRoleRepository;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.IAccountService;
+import com.c823.consorcio.service.IapartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -33,6 +38,10 @@ public class UserDetailsCustomService implements UserDetailsService {
   IUserRepository iUserRepository;
   @Autowired
   IAccountService accountService;
+  @Autowired
+  ApartmentMap apartmentMap;
+  @Autowired
+  IapartmentService iapartmentService;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -54,21 +63,26 @@ public class UserDetailsCustomService implements UserDetailsService {
 
 
 
-    /*this.accountService.addAccount();
-    ApartmentEntity apartment =
+
+
+    ApartmentEntity apartmentEntity = this.apartmentMap.apartmentDTO2Entity(userDto);
+    ApartmentEntity apartmentEntitySaved = this.iApartmentRepository.save(apartmentEntity);
+
+    this.accountService.addAccount(apartmentEntitySaved.getApartmentId(),entitySaved.getEmail());
+    //this.iapartmentService
+
+
 
     ResponseUserDto responseUserDto = userMap.userAuthEntity2Dto(entitySaved);
 
 
 
-    /*ApartmentEntity apartment = this.iApartmentRepository.findByApartmentNumber(
-        userDto.getApartmentNumber());*/
 
 
+    return responseUserDto;
+    }
 
 
-    return null;
-  }
 
   public void saveAdmin(UserAuthDto user) {
   }

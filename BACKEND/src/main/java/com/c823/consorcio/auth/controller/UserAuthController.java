@@ -69,5 +69,6 @@ public class UserAuthController {
     return ResponseEntity.ok(new AuthenticationResponse(jwt));
   }
 
-  }*/
-}
+
+  }
+

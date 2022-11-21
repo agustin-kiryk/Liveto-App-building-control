@@ -27,6 +27,7 @@ public class AccountEntity {
     private double balance;
 
     @Column(name = "CREATION_DATE", nullable = false)
+
     private Date creationDate;
 
     @Column(name = "UPDATE_DATE", nullable = false)
