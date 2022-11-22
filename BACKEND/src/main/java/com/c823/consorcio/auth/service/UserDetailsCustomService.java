@@ -44,8 +44,12 @@ public class UserDetailsCustomService implements UserDetailsService {
   IapartmentService iapartmentService;
 
   @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    return null;
+  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    UserEntity userEntity = iUserRepository.findByEmail(email);
+    if (userEntity == null) {
+      throw new UsernameNotFoundException("username or password not found");
+    }
+    return UserDetailsImpl.build(userEntity);
   }
 
   public ResponseUserDto save(ResponseUserDto userDto) throws RepeatedUsername {
