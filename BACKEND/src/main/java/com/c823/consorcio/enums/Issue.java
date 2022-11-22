@@ -2,5 +2,5 @@ package com.c823.consorcio.enums;
 
 public enum Issue {
     REPAIR, COMPLAIN,
-    MISSING_ITEM
+    MISSING_ITEM, OTHER
 }
