@@ -14,8 +14,8 @@ function Request() {
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
   // console.log(errors);
   return (
-    <div>
-      <div>
+    <div className="sm bg-yellow-600 flex h-full">
+      <div className="border-solid border-2 border-black bg-red-600 ">
         <h2>Reportes</h2>
         <table className="table-auto">
           <thead>
@@ -42,7 +42,7 @@ function Request() {
           </tbody>
         </table>
       </div>
-      <div>
+      <div className="border-solid border-2 border-black bg-blue-900">
         <form onSubmit={handleSubmit(onSubmit)}>
           <p>Que deseas hacer?</p>
           <select {...register("createRequest")}>
