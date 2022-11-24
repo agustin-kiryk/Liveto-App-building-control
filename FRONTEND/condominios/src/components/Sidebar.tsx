@@ -22,132 +22,75 @@ export default function Sidebar() {
   }
   return (
     <div>
-      <nav className="bg-red-600 w-full flex justify-end shadow-[0_0_0_100vmax_rgba(220,38,38,1)] clip-path py-5">
-        <button onClick={openMenu} className='bg-blue-400'><RiHome3Line /></button>
-        <ul className={`w-full flex fixed top-[0] bg-lime-700 h-screen  flex-col gap-8 list-none ${menuIsOpen ? 'left-full' : 'left-0'}`}>
-          <button onClick={openMenu}><RiHome3Fill /></button>
-          <h1 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px]">
-            <RiBuilding4Line />
+      <div className='bg-red-400 shadow-[0_0_0_100vmax_rgba(248,113,113,1)] clip-path'>
+        <div className=' w-full flex justify-between py-2'>
+          <h2 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px] items-center">
+            <RiBuilding4Line className='text-[2.5rem]' />
             liveto
-          </h1>
+          </h2>
+          <button onClick={openMenu} className='bg-blue-400'><RiHome3Line className='text-[2.5rem]' /></button>
+        </div>
+      </div >
+      <nav>
+        <ul className={` w-full flex fixed h-screen items-center flex-col gap-y-11 py-12 overflow-auto list-none ${menuIsOpen ? 'left-full  ease-in-out duration-500' : 'left-0  ease-in-out duration-500'} `}>
           <li>
             <Link
               to='/'
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
+              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
             >
-              <RiDashboardLine />
+              <RiDashboardLine className='text-[2rem]' />
               Escritorio
             </Link>
           </li>
           <li>
             <Link
               to="/expenses"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
+              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
             >
-              <RiWallet2Line />
+              <RiWallet2Line className='text-[2rem]' />
               Gastos y expensas
             </Link>
           </li>
           <li>
             <Link
               to="/amenities"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
+              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
             >
-              <RiCommunityFill />
+              <RiCommunityFill className='text-[2rem]' />
               Espacios comunes
             </Link>
           </li>
           <li>
             <Link
               to="/message"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
+              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
             >
-              <RiMessage3Line />
+              <RiMessage3Line className='text-[2rem]' />
               Mensajes
             </Link>
           </li>
           <li>
             <Link
               to="/request"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
+              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl"
             >
-              <RiAlertFill />
+              <RiAlertFill className='text-[2rem]' />
               Reportes
             </Link>
           </li>
           <div>
             <Link
               to="/login"
-              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors bg-yellow-600"
+              className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors text-2xl bg-yellow-600"
             >
-              <RiLogoutBoxLine />
+              <RiLogoutBoxLine className='text-[2rem]' />
               Salir de cuenta
             </Link>
           </div>
         </ul>
       </nav>
-      <ul className={`w-full flex fixed top-[0] bg-lime-700 h-screen  flex-col gap-8 list-none ${menuIsOpen ? 'left-full' : 'left-0'}`}>
-        <button onClick={openMenu}><RiHome3Fill /></button>
-        <h1 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px]">
-          <RiBuilding4Line />
-          liveto
-        </h1>
-        <li>
-          <Link
-            to='/'
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiDashboardLine />
-            Escritorio
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/expenses"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiWallet2Line />
-            Gastos y expensas
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/amenities"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiCommunityFill />
-            Espacios comunes
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/message"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiMessage3Line />
-            Mensajes
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/request"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiAlertFill />
-            Reportes
-          </Link>
-        </li>
-        <div>
-          <Link
-            to="/login"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors bg-yellow-600"
-          >
-            <RiLogoutBoxLine />
-            Salir de cuenta
-          </Link>
-        </div>
-      </ul>
     </div>
+
 
   )
 }
