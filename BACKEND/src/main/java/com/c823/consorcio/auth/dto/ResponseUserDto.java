@@ -1,6 +1,6 @@
 package com.c823.consorcio.auth.dto;
-
 import com.c823.consorcio.dto.AccountDto;
+import com.c823.consorcio.dto.ApartmentDto;
 import com.c823.consorcio.enums.RoleName;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +28,8 @@ public class ResponseUserDto {
   private List<AccountDto> accounts;
   private Date creationDate;
   private Long apartmentNumber;
+  private String floor;
   private String jwt;
-
+  private List<ApartmentDto> apartments;
 
 }

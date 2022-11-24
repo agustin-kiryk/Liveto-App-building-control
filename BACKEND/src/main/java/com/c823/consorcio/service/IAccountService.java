@@ -2,9 +2,12 @@ package com.c823.consorcio.service;
 
 import com.c823.consorcio.entity.AccountEntity;
 
+import com.c823.consorcio.entity.ApartmentEntity;
+
 public interface IAccountService {
 
-  Object addAccount(Long apartmentNumber, String email);
+  Object addAccount(ApartmentEntity apartment, String email);
 
-  AccountEntity createAccount(Long apartmentId);
+  AccountEntity createAccount(ApartmentEntity apartment);
+
 }
