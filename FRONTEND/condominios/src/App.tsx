@@ -11,17 +11,18 @@ function App() {
 
   return (
     <HashRouter>
-      <div className="px-6">
+      <div className="px-6 bg-[#5F81FF]">
         <Sidebar />
-        <div>
-          {/* <UserInfo /> */}
+        <div className='flex flex-col gap-y-3'>
+          <UserInfo />
           <Routes>
-            {/* <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path='/request' element={<Request />} />
+
             <Route path='/expenses' element={<Expenses />} />
             <Route path='/amenities' element={<Amenities />} />
             <Route path='/message' element={<Message />} />
-            <Route path='/login' element={<Login />} /> */}
+            <Route path='/login' element={<Login />} />
           </Routes>
         </div>
       </div>
