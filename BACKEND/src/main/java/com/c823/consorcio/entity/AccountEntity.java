@@ -40,7 +40,7 @@ public class AccountEntity {
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountId")
     private List<TransactionEntity> transactions = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "apartment_id")
     private ApartmentEntity apartment;
 
