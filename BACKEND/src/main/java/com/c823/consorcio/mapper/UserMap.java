@@ -1,5 +1,4 @@
 package com.c823.consorcio.mapper;
-
 import com.c823.consorcio.auth.service.JwtUtils;
 import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.auth.dto.ResponseUserDto;
@@ -7,6 +6,9 @@ import com.c823.consorcio.enums.RoleName;
 import com.c823.consorcio.repository.IApartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import com.c823.consorcio.entity.UserEntity;
+import com.c823.consorcio.auth.dto.ResponseUserDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +22,6 @@ public class UserMap {
   private ApartmentMap apartmentMap;
   @Autowired
   private IApartmentRepository apartmentRepository;
-
-
 
 
 
@@ -45,10 +45,12 @@ public class UserMap {
     dto.setFirstName(entitySaved.getFirstName());
     dto.setLastName(entitySaved.getLastName());
     dto.setEmail(entitySaved.getEmail());
+
     dto.setRole(entitySaved.getRole().getRoleName());
     dto.setCreationDate(entitySaved.getCreationDate());
     dto.setAccounts(this.accountMap.accountEntityList2DtoList(entitySaved.getAccounts()));
     dto.setApartments(this.apartmentMap.apartmentEntityList2DtoList(entitySaved.getApartments()));
+
 
     return dto;
   }

@@ -40,11 +40,10 @@ public class AccountEntity {
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountId")
     private List<TransactionEntity> transactions = new ArrayList<>();
 
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "apartment_id")
     private ApartmentEntity apartment;
-
-
 
 
     private boolean deleted = Boolean.FALSE;

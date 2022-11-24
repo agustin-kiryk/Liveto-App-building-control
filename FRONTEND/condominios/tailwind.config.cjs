@@ -5,7 +5,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+    },
+    fontFamily: {
+      'Inter': ['Inter', 'sans-serif',],
+      'Poppins': ['Poppins', 'sans-serif',]
+    },
+
   },
   plugins: [],
 }

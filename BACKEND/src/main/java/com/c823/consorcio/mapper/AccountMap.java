@@ -19,6 +19,7 @@ public class AccountMap {
       accountDto.setCreationDate(account.getCreationDate());
       accountDto.setUpdateDate(account.getUpdateDate());
       //accountDto.setApartment(account.getApartment());
+
       accountDtos.add(accountDto);
     }
     return accountDtos;

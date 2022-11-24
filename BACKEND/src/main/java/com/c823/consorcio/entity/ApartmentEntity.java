@@ -14,7 +14,9 @@ public class ApartmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "APARTMENT_ID")
+
     private Long apartmentId;
+
 
     @Column(name = "APARTMENT_NUMBER")
     private Long apartmentNumber;

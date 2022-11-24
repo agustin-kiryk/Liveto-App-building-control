@@ -1,5 +1,4 @@
 package com.c823.consorcio.repository;
-
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.UserEntity;
 import java.util.List;
@@ -11,5 +10,7 @@ public interface IApartmentRepository extends JpaRepository<ApartmentEntity, Lon
 
   ApartmentEntity findByApartmentNumber (Long apartmentNumber);
 
+
   List<ApartmentEntity> findAllByUser(UserEntity user);
+
 }

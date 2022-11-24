@@ -1,41 +1,32 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import './App.css';
+import { Request, Home, Expenses, Amenities, Message, Login } from './pages/index';
+import { Sidebar, UserInfo } from './components/index'
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from './reduxHooks/reduxHooks';
+import { increment } from './store/slices/counter.slice';
+
+
 
 function App() {
-    const [count, setCount] = useState(0);
 
-    return (
-        <div className="App">
-            <div>
-                <h1 className="text-3xl bg-red-600">
-                    Texto de prueba TailwindCSS
-                </h1>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src="/vite.svg" className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://reactjs.org" target="_blank">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
+  return (
+    <HashRouter>
+      <div className="px-6">
+        <Sidebar />
+        <div className=''>
+          {/* <UserInfo /> */}
+          <Routes>
+            {/* <Route path='/' element={<Home />} />
+            <Route path='/request' element={<Request />} />
+            <Route path='/expenses' element={<Expenses />} />
+            <Route path='/amenities' element={<Amenities />} />
+            <Route path='/message' element={<Message />} />
+            <Route path='/login' element={<Login />} /> */}
+          </Routes>
         </div>
-    );
+      </div>
+    </HashRouter>
+  );
 }
 
 export default App;

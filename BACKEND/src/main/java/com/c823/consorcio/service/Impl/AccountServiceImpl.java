@@ -1,6 +1,7 @@
 package com.c823.consorcio.service.Impl;
 
 import com.c823.consorcio.entity.AccountEntity;
+
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.auth.dto.ResponseUserDto;
@@ -29,7 +30,10 @@ public class AccountServiceImpl implements IAccountService {
 
 
   @Override
+
   public String addAccount(ApartmentEntity apartment, String email) {
+
+ 
 
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
     UserEntity user = this.userRepository.findByEmail(email);
@@ -38,16 +42,16 @@ public class AccountServiceImpl implements IAccountService {
       throw new ParamNotFound("ID invalid");
 
     }*/
+
     AccountEntity account = createAccount(apartment);
     UserEntity log = this.userRepository.findByEmail(email);
     account.setUser(log);
     account.setApartment(apartment);
+
     this.iaccountRepository.save(account);
     log.addAccount(account);
     this.userRepository.save(log);
     return HttpStatus.CREATED.getReasonPhrase();
-
-
 
 
   }
