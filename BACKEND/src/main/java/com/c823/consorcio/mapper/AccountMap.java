@@ -18,6 +18,7 @@ public class AccountMap {
       accountDto.setBalance(account.getBalance());
       accountDto.setCreationDate(account.getCreationDate());
       accountDto.setUpdateDate(account.getUpdateDate());
+      //accountDto.setApartment(account.getApartment());
       accountDtos.add(accountDto);
     }
     return accountDtos;
