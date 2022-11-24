@@ -13,7 +13,7 @@ function App() {
     <HashRouter>
       <div className="px-6">
         <Sidebar />
-        <div className=''>
+        <div>
           {/* <UserInfo /> */}
           <Routes>
             {/* <Route path='/' element={<Home />} />

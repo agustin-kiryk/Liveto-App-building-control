@@ -21,15 +21,18 @@ export default function Sidebar() {
 
   }
   return (
-    <div>
-      <nav className="bg-red-600 w-full flex justify-end shadow-[0_0_0_100vmax_rgba(220,38,38,1)] clip-path py-5">
-        <button onClick={openMenu} className='bg-blue-400'><RiHome3Line /></button>
-        <ul className={`w-full flex fixed top-[0] bg-lime-700 h-screen  flex-col gap-8 list-none ${menuIsOpen ? 'left-full' : 'left-0'}`}>
+    <div className='bg-red-400 shadow-[0_0_0_100vmax_rgb(248_113_113_1)] clip-path'>
+      <div className='bg-green-600 w-full flex justify-between'>
+        <h2 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px] items-center">
+          <RiBuilding4Line className='w-8 h-8' />
+          liveto
+        </h2>
+        <button onClick={openMenu} className='bg-blue-400'><RiHome3Line className='w-8 h-8' /></button>
+      </div>
+      <nav className='w-full flex justify-end sticky top-0'>
+        <ul className={`w-full flex fixed top-[0] h-screen items-center z-10 flex-col gap-8 list-none ${menuIsOpen ? 'left-full' : 'left-0'}`}>
           <button onClick={openMenu}><RiHome3Fill /></button>
-          <h1 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px]">
-            <RiBuilding4Line />
-            liveto
-          </h1>
+
           <li>
             <Link
               to='/'
@@ -86,68 +89,7 @@ export default function Sidebar() {
           </div>
         </ul>
       </nav>
-      <ul className={`w-full flex fixed top-[0] bg-lime-700 h-screen  flex-col gap-8 list-none ${menuIsOpen ? 'left-full' : 'left-0'}`}>
-        <button onClick={openMenu}><RiHome3Fill /></button>
-        <h1 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px]">
-          <RiBuilding4Line />
-          liveto
-        </h1>
-        <li>
-          <Link
-            to='/'
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiDashboardLine />
-            Escritorio
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/expenses"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiWallet2Line />
-            Gastos y expensas
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/amenities"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiCommunityFill />
-            Espacios comunes
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/message"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiMessage3Line />
-            Mensajes
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/request"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors"
-          >
-            <RiAlertFill />
-            Reportes
-          </Link>
-        </li>
-        <div>
-          <Link
-            to="/login"
-            className="flex items-center gap-4 font-semibold hover:bg-blue-300 hover:font-bold rounded-lg transition-colors bg-yellow-600"
-          >
-            <RiLogoutBoxLine />
-            Salir de cuenta
-          </Link>
-        </div>
-      </ul>
-    </div>
+    </div >
 
   )
 }
