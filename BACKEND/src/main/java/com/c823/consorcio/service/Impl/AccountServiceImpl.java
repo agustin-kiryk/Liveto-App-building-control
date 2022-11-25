@@ -75,7 +75,7 @@ public class AccountServiceImpl implements IAccountService {
 
   @Override
   public double calculateBalance(Long accountId) {
-    
+
     double totalPayment = 0;
     double totalIncome = 0;
     AccountEntity account = iaccountRepository.findByAccountId(accountId);
