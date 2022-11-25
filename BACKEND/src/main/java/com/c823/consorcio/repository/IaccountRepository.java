@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface IaccountRepository extends JpaRepository<AccountEntity, Long> {
 
   List<AccountEntity> findAllByUser(UserEntity user);
+  AccountEntity findByAccountId(Long accountId);
 
 
 }

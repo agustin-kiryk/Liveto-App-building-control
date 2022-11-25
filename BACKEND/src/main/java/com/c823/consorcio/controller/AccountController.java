@@ -1,5 +1,6 @@
 package com.c823.consorcio.controller;
 
+import com.c823.consorcio.dto.AccountBasicDto;
 import com.c823.consorcio.service.IAccountService;
 import com.c823.consorcio.service.IUserService;
 import java.util.List;
@@ -20,7 +21,8 @@ public class AccountController {
 
   @GetMapping("/balance")
   public ResponseEntity<List<AccountBasicDto>> getBalance(){
-    List
+    List<AccountBasicDto> accounts = iUserService.getAccountsBalance();
+    return ResponseEntity.ok(accounts);
   }
 
 
