@@ -1,12 +1,14 @@
 package com.c823.consorcio.service.Impl;
 
+import com.c823.consorcio.auth.exception.ParamNotFound;
 import com.c823.consorcio.entity.AccountEntity;
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.repository.IApartmentRepository;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.repository.IaccountRepository;
-import com.c823.consorcio.service.IApartmentService;
+
+import com.c823.consorcio.service.IapartmentService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ApartmentServiceImpl implements IApartmentService {
+public class ApartmentServiceImpl implements IapartmentService {
 
   @Autowired
   IUserRepository userRepository;
@@ -30,10 +32,10 @@ public class ApartmentServiceImpl implements IApartmentService {
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
     UserEntity user = this.userRepository.findByEmail(email);
     List<ApartmentEntity> apartments = this.iApartmentRepository.findAllByUser(user);
-   /* if (user == null) {
+    if (user == null) {
       throw new ParamNotFound("ID invalid");
 
-    }*/
+    }
     ApartmentEntity apartment = createApartment(apartmentNumber);
     UserEntity log = this.userRepository.findByEmail(email);
     apartment.setUser(log);
@@ -53,9 +55,4 @@ public class ApartmentServiceImpl implements IApartmentService {
     return apartment;
   }
 }
-/*AccountEntity accountEntity = new AccountEntity();
-    accountEntity.setCreationDate(new Date());
-    accountEntity.setBalance(0.0);
-    accountEntity.setUpdateDate(new Date());
 
-    return accountEntity;*/

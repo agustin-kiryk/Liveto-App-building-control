@@ -10,4 +10,5 @@ public interface IAccountService {
 
   AccountEntity createAccount(ApartmentEntity apartment);
 
+  double calculateBalance(Long accountId);
 }
