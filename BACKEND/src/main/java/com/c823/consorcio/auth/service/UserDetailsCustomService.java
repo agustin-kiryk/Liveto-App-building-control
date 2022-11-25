@@ -15,7 +15,7 @@ import com.c823.consorcio.repository.IApartmentRepository;
 import com.c823.consorcio.repository.IRoleRepository;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.IAccountService;
-import com.c823.consorcio.service.IApartmentService;
+
 import java.util.List;
 import com.c823.consorcio.service.IapartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class UserDetailsCustomService implements UserDetailsService {
   @Autowired
   ApartmentMap apartmentMap;
   @Autowired
-  IApartmentService iapartmentService;
+  IapartmentService iapartmentService;
   @Autowired
   AccountMap accountMap;
 
@@ -57,7 +57,7 @@ public class UserDetailsCustomService implements UserDetailsService {
 
   public ResponseUserDto save(ResponseUserDto userDto) throws RepeatedUsername {
     if (iApartmentRepository.findByApartmentNumber(userDto.getApartmentNumber()) != null){
-      throw new RepeatedUsername("Repeted Department Number");
+      throw new RepeatedUsername("Repeted Apartment Number");
     }
     UserEntity entity = this.userMap.userAuthDto2Entity(userDto);
 
