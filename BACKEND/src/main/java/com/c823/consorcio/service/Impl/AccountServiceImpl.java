@@ -75,12 +75,13 @@ public class AccountServiceImpl implements IAccountService {
 
   @Override
   public double calculateBalance(Long accountId) {
+    
     double totalPayment = 0;
     double totalIncome = 0;
     AccountEntity account = iaccountRepository.findByAccountId(accountId);
     List<TransactionEntity> payments = iTransactionRepository.findAllByAccountIdAndType(account,
         TypeTransaction.PAYMENT);
-    List<TransactionEntity> incomes = transactionRepository.findAllByAccountIdAndType(account, TypeTransaction.INCOME);
+    List<TransactionEntity> incomes = iTransactionRepository.findAllByAccountIdAndType(account, TypeTransaction.INCOME);
 
     for (int i = 0; i < payments.size(); i++) {
 
@@ -99,8 +100,11 @@ public class AccountServiceImpl implements IAccountService {
       totalIncome = totalIncome + income.getAmount();
 
     }
+    double balance = totalIncome - totalPayment;
+    account.setBalance(balance);
+    iaccountRepository.save(account);
 
-    return 0;
+    return balance;
   }
 
 
