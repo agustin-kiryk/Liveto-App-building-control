@@ -7,8 +7,11 @@ import com.c823.consorcio.entity.AccountEntity;
 import com.c823.consorcio.entity.TransactionEntity;
 import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.enums.TypeTransaction;
+import com.c823.consorcio.mapper.TransactionMap;
+import com.c823.consorcio.repository.ITransactionRepository;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.repository.IaccountRepository;
+import com.c823.consorcio.service.IAccountService;
 import com.c823.consorcio.service.ITransactionService;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,13 @@ public class TransactionServiceImpl implements ITransactionService {
   private IUserRepository userRepository;
   @Autowired
   private IaccountRepository iaccountRepository;
+  @Autowired
+  private TransactionMap transactionMap;
+  @Autowired
+  private IAccountService iAccountService;
+  @Autowired
+  private ITransactionRepository iTransactionRepository;
+
 
 
 
@@ -63,9 +73,21 @@ public class TransactionServiceImpl implements ITransactionService {
     if(transactionDto.getAmount() <= 0){
       throw new ParamNotFound("The amount most be greater than 0 (zero)");
     }else {
-      TransactionEntity transactionEntity =
+      TransactionEntity transactionEntity = transactionMap.transactionDto2Entity(transactionDto);
+      AccountEntity accountEntity = iaccountRepository.findByAccountId(transactionDto.getAccountId());
+
+      transactionEntity.setAmount(transactionDto.getAmount());
+      transactionEntity.setType(transactionDto.getType());
+      transactionEntity.setAccountId(accountEntity);
+      transactionEntity.setUserEntity(accountEntity.getUser());
+      transactionEntity.setDescription(transactionDto.getDescription());
+      transactionEntity.setTransactionDate(new Date());
+      this.iAccountService.updateBalance(
+          transactionDto.getAccountId(),transactionDto.getAmount(),transactionDto.getType());
+      this.iTransactionRepository.save(transactionEntity);
+      return transactionDto;
+
     }
 
-    return null;
   }
 }
