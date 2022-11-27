@@ -1,15 +1,13 @@
 package com.c823.consorcio.service.Impl;
 
 import com.c823.consorcio.auth.exception.ParamNotFound;
-import com.c823.consorcio.entity.AccountEntity;
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.repository.IApartmentRepository;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.repository.IaccountRepository;
 
-import com.c823.consorcio.service.IapartmentService;
-import java.util.Date;
+import com.c823.consorcio.service.IApartmentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ApartmentServiceImpl implements IapartmentService {
+public class ApartmentServiceImpl implements IApartmentService {
 
   @Autowired
   IUserRepository userRepository;
