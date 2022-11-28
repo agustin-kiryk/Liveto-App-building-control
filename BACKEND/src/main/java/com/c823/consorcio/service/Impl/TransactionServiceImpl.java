@@ -54,11 +54,10 @@ public class TransactionServiceImpl implements ITransactionService {
     send.setAmount(billPaymentDto.getAmount());
     send.setDescription(billPaymentDto.getDescription());
     send.setAccountId(account.getAccountId());
+    send.setDestinationAccountId(receive.getAccountId());
     send.setType(TypeTransaction.BILLPAYMENT);
     send.setTransactionDate(new Date());
     TransactionDto transactionDto = createTransaction(send);
-
-
 
     TransactionDto receiver = new TransactionDto();
     receiver.setAmount(billPaymentDto.getAmount());
@@ -80,21 +79,53 @@ public class TransactionServiceImpl implements ITransactionService {
     }else {
       TransactionEntity transactionEntity = transactionMap.transactionDto2Entity(transactionDto);
       AccountEntity accountEntity = iaccountRepository.findByAccountId(transactionDto.getAccountId());
-
       transactionEntity.setAmount(transactionDto.getAmount());
       transactionEntity.setType(transactionDto.getType());
       transactionEntity.setAccountId(accountEntity);
       transactionEntity.setUserEntity(accountEntity.getUser());
       transactionEntity.setDescription(transactionDto.getDescription());
       transactionEntity.setTransactionDate(new Date());
-     // transactionEntity.setTransactionId(transactionDto.getTransactionId());
       this.iAccountService.updateBalance(
           transactionDto.getAccountId(),transactionDto.getAmount(),transactionDto.getType());
       this.iTransactionRepository.save(transactionEntity);
       transactionDto.setTransactionId(transactionEntity.getTransactionId());
       return transactionDto;
-
     }
+  }
+
+  @Override
+  public TransactionDto sendPayment(BillPaymentDto billPaymentDto) {
+    String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    UserEntity user = userRepository.findByEmail(email);
+    AccountEntity account = iaccountRepository.findByUser(user);
+    AccountEntity receive = iaccountRepository.findById(
+        billPaymentDto.getDestinationAccountId()).orElseThrow(
+        ()-> new ParamNotFound("The destination account do not exist"));
+    if (user == null || receive == null){
+      throw new ParamNotFound("Invalid Operation");
+    }
+    if(billPaymentDto.getAmount() <= 0){
+      throw new ParamNotFound("Ammount must be greater than 0 (zero)");
+    }
+
+    TransactionDto send = new TransactionDto();
+    send.setAmount(billPaymentDto.getAmount());
+    send.setDescription(billPaymentDto.getDescription());
+    send.setAccountId(account.getAccountId());
+    send.setDestinationAccountId(receive.getAccountId());
+    send.setType(TypeTransaction.SENDPAYMENT);
+    send.setTransactionDate(new Date());
+    TransactionDto transactionDto = createTransaction(send);
+
+    TransactionDto receiver = new TransactionDto();
+    receiver.setAmount(billPaymentDto.getAmount());
+    receiver.setDescription(billPaymentDto.getDescription());
+    receiver.setAccountId(receive.getAccountId());
+    receiver.setType(TypeTransaction.INCOME);
+    receiver.setTransactionDate(new Date());
+    createTransaction(receiver);
+
+    return transactionDto;
 
   }
 }
