@@ -45,8 +45,8 @@ public class AccountMap {
 
     dto.setAccountId(entity.getAccountId());
     dto.setBalance(entity.getBalance());
-    dto.setTransaction(this.transactionMap.entityList2BasicDtoList(entity.getTransactions()));//TODO: COMPLETAR METODO EN MAPTRANSACTION
-    
+    //dto.setTransaction(this.transactionMap.entityList2BasicDtoList(entity.getTransactions()));//TODO: COMPLETAR METODO EN MAPTRANSACTION
+
     return dto;
   }
 }

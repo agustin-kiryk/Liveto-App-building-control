@@ -25,7 +25,5 @@ public class TransactionMap {
 
   }
 
-  public List<TransactionDto> entityList2BasicDtoList(List<TransactionEntity> transactions) {
 
-  }
 }

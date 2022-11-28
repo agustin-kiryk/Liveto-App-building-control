@@ -53,7 +53,7 @@ public class TransactionServiceImpl implements ITransactionService {
     TransactionDto send = new TransactionDto();
     send.setAmount(billPaymentDto.getAmount());
     send.setDescription(billPaymentDto.getDescription());
-    send.setAccountId(account.getAccountId());//TODO: CAMBIAR A ID ACCOUNT
+    send.setAccountId(account.getAccountId());
     send.setType(TypeTransaction.BILLPAYMENT);
     send.setTransactionDate(new Date());
     TransactionDto transactionDto = createTransaction(send);
