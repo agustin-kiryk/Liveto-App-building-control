@@ -16,7 +16,9 @@ import com.c823.consorcio.service.ITransactionService;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TransactionServiceImpl implements ITransactionService {
 
   @Autowired
@@ -37,6 +39,7 @@ public class TransactionServiceImpl implements ITransactionService {
   public TransactionDto sendInvoice(BillPaymentDto billPaymentDto) {
     String email = SecurityContextHolder.getContext().getAuthentication().getName();
     UserEntity user = userRepository.findByEmail(email);
+    AccountEntity account = iaccountRepository.findByUser(user);
     AccountEntity receive = iaccountRepository.findById(
         billPaymentDto.getDestinationAccountId()).orElseThrow(
             ()-> new ParamNotFound("The destination account do not exist"));
@@ -50,8 +53,8 @@ public class TransactionServiceImpl implements ITransactionService {
     TransactionDto send = new TransactionDto();
     send.setAmount(billPaymentDto.getAmount());
     send.setDescription(billPaymentDto.getDescription());
-    send.setAccountId(billPaymentDto.getDestinationAccountId());
-    send.setType(TypeTransaction.PAYMENT);
+    send.setAccountId(account.getAccountId());//TODO: CAMBIAR A ID ACCOUNT
+    send.setType(TypeTransaction.BILLPAYMENT);
     send.setTransactionDate(new Date());
     TransactionDto transactionDto = createTransaction(send);
 

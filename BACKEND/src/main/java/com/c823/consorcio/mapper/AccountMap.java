@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 public class AccountMap {
   @Autowired
   private ITransactionRepository iTransactionRepository;
+  @Autowired
+  private TransactionMap transactionMap;
 
   public List<AccountDto> accountEntityList2DtoList(List<AccountEntity> accounts) {
     List<AccountDto> accountDtos = new ArrayList<>();
@@ -43,6 +45,8 @@ public class AccountMap {
 
     dto.setAccountId(entity.getAccountId());
     dto.setBalance(entity.getBalance());
+    dto.setTransaction(this.transactionMap.entityList2BasicDtoList(entity.getTransactions()));//TODO: COMPLETAR METODO EN MAPTRANSACTION
+    
     return dto;
   }
 }

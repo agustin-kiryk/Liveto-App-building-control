@@ -9,7 +9,7 @@ import lombok.Setter;
 public class AccountBasicDto {
   private Long accountId;
   private Double balance;
-  private TransactionDto transaction;
+  private List<TransactionDto> transaction;
 
 
 }
