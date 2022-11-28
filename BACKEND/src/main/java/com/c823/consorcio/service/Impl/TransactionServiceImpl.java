@@ -58,6 +58,8 @@ public class TransactionServiceImpl implements ITransactionService {
     send.setTransactionDate(new Date());
     TransactionDto transactionDto = createTransaction(send);
 
+
+
     TransactionDto receiver = new TransactionDto();
     receiver.setAmount(billPaymentDto.getAmount());
     receiver.setDescription(billPaymentDto.getDescription());
@@ -85,9 +87,11 @@ public class TransactionServiceImpl implements ITransactionService {
       transactionEntity.setUserEntity(accountEntity.getUser());
       transactionEntity.setDescription(transactionDto.getDescription());
       transactionEntity.setTransactionDate(new Date());
+     // transactionEntity.setTransactionId(transactionDto.getTransactionId());
       this.iAccountService.updateBalance(
           transactionDto.getAccountId(),transactionDto.getAmount(),transactionDto.getType());
       this.iTransactionRepository.save(transactionEntity);
+      transactionDto.setTransactionId(transactionEntity.getTransactionId());
       return transactionDto;
 
     }

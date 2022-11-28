@@ -112,7 +112,7 @@ public class AccountServiceImpl implements IAccountService {
       accountEntity.setBalance(accountEntity.getBalance() + amount);
     }
     if (type == TypeTransaction.BILLPAYMENT){
-      accountEntity.setBalance(accountEntity.getBalance());
+
     }
 
     iaccountRepository.save(accountEntity);
