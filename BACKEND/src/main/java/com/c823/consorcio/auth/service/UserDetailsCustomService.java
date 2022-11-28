@@ -1,7 +1,5 @@
 package com.c823.consorcio.auth.service;
 import com.c823.consorcio.auth.dto.UserAuthDto;
-import com.c823.consorcio.entity.AccountEntity;
-import com.c823.consorcio.auth.exception.ParamNotFound;
 import com.c823.consorcio.entity.ApartmentEntity;
 import com.c823.consorcio.entity.RoleEntity;
 import com.c823.consorcio.entity.UserEntity;
@@ -16,8 +14,7 @@ import com.c823.consorcio.repository.IRoleRepository;
 import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.IAccountService;
 
-import java.util.List;
-import com.c823.consorcio.service.IapartmentService;
+import com.c823.consorcio.service.IApartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,7 +37,7 @@ public class UserDetailsCustomService implements UserDetailsService {
   @Autowired
   ApartmentMap apartmentMap;
   @Autowired
-  IapartmentService iapartmentService;
+  IApartmentService iapartmentService;
   @Autowired
   AccountMap accountMap;
 

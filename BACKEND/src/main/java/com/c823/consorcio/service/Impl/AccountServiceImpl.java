@@ -22,6 +22,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountServiceImpl implements IAccountService {
+
+
   @Autowired
   IUserRepository userRepository;
   @Autowired
@@ -30,16 +32,8 @@ public class AccountServiceImpl implements IAccountService {
   IApartmentRepository iApartmentRepository;
   @Autowired
   ITransactionRepository iTransactionRepository;
-
-
-
-
-
   @Override
-
   public String addAccount(ApartmentEntity apartment, String email) {
-
- 
 
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
     UserEntity user = this.userRepository.findByEmail(email);
@@ -105,6 +99,24 @@ public class AccountServiceImpl implements IAccountService {
     iaccountRepository.save(account);
 
     return balance;
+  }
+
+  @Override
+  public void updateBalance(Long accountId, Double amount, TypeTransaction type) {
+    AccountEntity accountEntity = iaccountRepository.findById(accountId).orElseThrow(
+        ()-> new ParamNotFound("id invalid"));
+    if (type == TypeTransaction.PAYMENT){
+      accountEntity.setBalance(accountEntity.getBalance() - amount);
+    }
+    if (type == TypeTransaction.INCOME){
+      accountEntity.setBalance(accountEntity.getBalance() + amount);
+    }
+    if (type == TypeTransaction.BILLPAYMENT){
+
+    }
+
+    iaccountRepository.save(accountEntity);
+
   }
 
 
