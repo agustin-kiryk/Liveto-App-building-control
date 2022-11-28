@@ -25,6 +25,14 @@ public class TransactionController {
    return ResponseEntity.status(HttpStatus.CREATED).body(result);
   }
 
+  @PostMapping("/sendPayment")
+  public ResponseEntity<TransactionDto> sendPayment(@RequestBody BillPaymentDto billPaymentDto){
+    TransactionDto result = transactionService.sendPayment(billPaymentDto);
+    return ResponseEntity.status(HttpStatus.CREATED).body(result);
+  }
+
+
+
 
 
 }

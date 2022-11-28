@@ -9,4 +9,6 @@ public interface ITransactionService {
   TransactionDto sendInvoice(BillPaymentDto billPaymentDto);
 
   TransactionDto createTransaction(TransactionDto transactionDto);
+
+  TransactionDto sendPayment(BillPaymentDto billPaymentDto);
 }
