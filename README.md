@@ -15,11 +15,11 @@
 -   Axios - Libreria (FALTA INSTALAR)
 -   Redux toolkit - Libreria (FALTA INSTALAR)
 
----
+----
 
 ## BACKEND
 
 ### Stack y herramientas:
 
 -   Java - Desarrollo
--   Springboot - Framework...
+-   Springboot - Framework..
